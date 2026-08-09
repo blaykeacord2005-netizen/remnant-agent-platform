@@ -1,0 +1,8 @@
+_localdata/
+leads/
+data/
+conversations/
+__pycache__/
+*.pyc
+.env
+.DS_Store
