@@ -1,0 +1,34 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "I need a quote for a driveway"
+      },
+      {
+        "role": "assistant",
+        "content": "What's the address or general area where the job is located?"
+      },
+      {
+        "role": "user",
+        "content": "kokomo"
+      },
+      {
+        "role": "assistant",
+        "content": "We definitely serve Kokomo. Every job starts with a free on-site estimate \u2014 Brandon comes out, takes a look, and gives you a written quote with no hidden fees.\n\nWhat's your name so I can get that set up for you?"
+      },
+      {
+        "role": "user",
+        "content": "Blayke acord 7654340804"
+      },
+      {
+        "role": "assistant",
+        "content": "You're all set! Brandon's been notified and will reach out to schedule your free estimate. What's the size of the driveway, and do you have a timeline in mind?"
+      }
+    ],
+    "_key": "s_1786300423574_fad3t5",
+    "tenant_id": "rock_solid",
+    "created_at": "2026-08-09T18:35:10.484622+00:00",
+    "updated_at": "2026-08-09T18:35:10.484622+00:00"
+  }
+]

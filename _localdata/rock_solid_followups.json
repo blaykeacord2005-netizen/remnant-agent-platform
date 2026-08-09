@@ -1,0 +1,15 @@
+[
+  {
+    "customer_name": "Blayke Acord",
+    "phone": "7654340804",
+    "project_type": "Driveway",
+    "created_at": "2026-08-09T18:35:08.750608+00:00",
+    "instant_reply": "Hey Blayke \u2014 this is Rock Solid in Kokomo. Got your message about your driveway. Brandon will give you a call shortly to set up a free on-site estimate. What's a good time to reach you?",
+    "sends_completed": 0,
+    "next_send": "2026-08-10T18:35:08.750608+00:00",
+    "status": "active",
+    "_key": "7654340804",
+    "tenant_id": "rock_solid",
+    "updated_at": "2026-08-09T18:35:08.750727+00:00"
+  }
+]

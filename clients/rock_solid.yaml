@@ -1,0 +1,100 @@
+# ─────────────────────────────────────────────────────────────
+# CLIENT CONFIG: Rock Solid Concrete LLC
+# Everything client-specific lives here. Code stays generic.
+# To add a new client: copy this file, change the values.
+# ─────────────────────────────────────────────────────────────
+
+tenant_id: rock_solid
+
+business:
+  name: "Rock Solid Concrete LLC"
+  short_name: "Rock Solid"
+  owner: "Brandon"
+  phone: "(765) 319-9749"
+  email: "rocksolidconcrete9749@gmail.com"
+  address: "120 Kingston Rd, Kokomo, IN 46901"
+  facebook: "https://www.facebook.com/rocksolidconcrete9749/"
+  hours: "Mon-Fri 7:00 AM - 5:00 PM. Saturday by appointment. Closed Sunday."
+  service_area:
+    - Kokomo
+    - Howard County
+    - Greentown
+    - Russiaville
+    - Peru
+    - Logansport
+    - Tipton
+    - Marion
+    - Noblesville
+    - Anderson
+    - Frankfort
+    - Lebanon
+    - Westfield
+    - Carmel
+
+agent:
+  name: "Rocky"
+  role: "front desk assistant"
+  greeting: "Hey! Thanks for reaching out to Rock Solid Concrete. What kind of project are you looking at?"
+  voice_tone: >
+    Friendly, direct, and down-to-earth — like a knowledgeable guy at a
+    contractor's front desk, not a corporate call center. Short sentences.
+    No jargon. Never oversell.
+
+branding:
+  primary_color: "#c0271d"
+  dark_color: "#0a0a0a"
+  accent_color: "#e03028"
+  font_display: "Oswald"
+  font_body: "Inter"
+
+services:
+  - name: "Driveways"
+    description: "Standard, stamped, and exposed aggregate driveways. Built on properly prepped subgrade with steel reinforcement."
+  - name: "Patios & Outdoor Living"
+    description: "Custom patios, fire pit pads, pool decks, and outdoor entertaining areas."
+  - name: "Retaining Walls"
+    description: "Structural and decorative walls, engineered for load and erosion control with proper drainage."
+  - name: "Commercial Flatwork"
+    description: "Warehouse pads, loading aprons, parking lots, and ADA-compliant sidewalks."
+  - name: "Sidewalks & Steps"
+    description: "Walkways, front steps, and entryways with proper grading and drainage."
+  - name: "Gravel & Site Prep"
+    description: "Gravel delivery, excavation, grading, and base preparation."
+  - name: "Decorative & Epoxy"
+    description: "Custom epoxy finishes, stamped textures, and specialty decorative concrete work."
+
+# Facts the agent is allowed to state. Anything not here, it escalates.
+facts:
+  - "Rock Solid is licensed and fully insured."
+  - "Free on-site estimates on every project, no obligation."
+  - "Written quotes with no hidden fees or surprise change orders."
+  - "Family owned and locally operated out of Kokomo."
+  - "Final walkthrough with the customer before final payment."
+  - "Jobsite is cleaned up at the end of every workday."
+
+# The agent must NEVER quote prices or commit to dates — those go to Brandon.
+escalation_rules:
+  - "Never quote a specific price. Say every job is priced after a free on-site look."
+  - "Never commit to a specific start date. Say Brandon confirms scheduling directly."
+  - "If asked something not covered in the facts or services, say you'll have Brandon follow up."
+  - "If the caller seems upset or has a complaint, collect their info and flag it for Brandon immediately."
+
+# What the agent collects before ending a conversation
+lead_fields:
+  - name
+  - phone
+  - project_type
+  - project_details
+  - timeline
+
+notifications:
+  # Where new leads get sent. Configure per client.
+  email_to: "rocksolidconcrete9749@gmail.com"
+  sms_to: "+17653199749"
+
+reviews:
+  # Fill this in once Brandon's Google Business Profile is claimed.
+  google_review_url: ""
+  facebook_review_url: "https://www.facebook.com/rocksolidconcrete9749/reviews"
+  # Customers who indicate they're unhappy never get sent to these links.
+  # They get routed to Brandon for a personal call instead.
