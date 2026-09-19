@@ -107,6 +107,34 @@ def stop_followup(cfg: dict, customer_name: str = "", reason: str = "replied") -
     return f"No active follow-up found for {customer_name}."
 
 
+# ── Stop by phone (inbound reply) ──────────────────────────────
+def stop_followup_by_phone(tenant_id: str, phone: str, reason: str = "replied") -> int:
+    """
+    Stops every active follow-up for this phone number. Returns how many.
+
+    Matches on phone, not name: stop_followup() matches by customer_name, and
+    leads without a name (e.g. missed calls) would collide on "".
+    """
+    key = "".join(c for c in (phone or "") if c.isdigit())[-10:]
+    if not key:
+        return 0
+
+    rows = _load(tenant_id)
+    changed = []
+    for r in rows:
+        if r.get("status") != "active":
+            continue
+        if "".join(c for c in r.get("phone", "") if c.isdigit())[-10:] != key:
+            continue
+        r["status"] = reason
+        r["next_send"] = None
+        changed.append(r)
+
+    if changed:
+        _save(tenant_id, changed)
+    return len(changed)
+
+
 # ── SKILL: what's due ──────────────────────────────────────────
 def get_pending_followups(cfg: dict) -> str:
     tenant_id = cfg["tenant_id"]
