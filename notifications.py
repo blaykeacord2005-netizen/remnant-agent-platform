@@ -90,12 +90,13 @@ def send_email(tenant_id: str, to: str, subject: str, body: str) -> dict:
 
 
 # ── SMS ────────────────────────────────────────────────────────
-def send_sms(tenant_id: str, to: str, body: str) -> dict:
+def send_sms(tenant_id: str, to: str, body: str, from_number: str = "") -> dict:
+    """from_number overrides the provider's default sending number (per-tenant)."""
     if not to:
         return {"sent": False, "reason": "no recipient configured"}
 
     telnyx_key = os.getenv("TELNYX_API_KEY", "").strip()
-    telnyx_from = os.getenv("TELNYX_PHONE_NUMBER", "").strip()
+    telnyx_from = from_number or os.getenv("TELNYX_PHONE_NUMBER", "").strip()
 
     if telnyx_key and telnyx_from:
         try:
@@ -115,7 +116,7 @@ def send_sms(tenant_id: str, to: str, body: str) -> dict:
 
     sid = os.getenv("TWILIO_ACCOUNT_SID", "").strip()
     tok = os.getenv("TWILIO_AUTH_TOKEN", "").strip()
-    tw_from = os.getenv("TWILIO_PHONE_NUMBER", "").strip()
+    tw_from = from_number or os.getenv("TWILIO_PHONE_NUMBER", "").strip()
 
     if sid and tok and tw_from:
         try:
@@ -166,6 +167,34 @@ def notify_new_lead(cfg: dict, lead: dict) -> dict:
         ),
     }
     return results
+
+
+# ── Owner alert on a customer reply ────────────────────────────
+def notify_customer_reply(cfg: dict, phone: str, message: str, lead: dict = None) -> dict:
+    tenant_id = cfg["tenant_id"]
+    b = cfg["business"]
+    n = cfg.get("notifications", {})
+
+    name = (lead or {}).get("name") or "Unknown"
+    message = (message or "").strip() or "(no text)"
+
+    subject = f"Reply from {name} ({phone})"
+    body = (
+        f"CUSTOMER REPLY — {b['name']}\n"
+        f"{'=' * 44}\n\n"
+        f"Name:     {name}\n"
+        f"Phone:    {phone}\n"
+        f"Project:  {(lead or {}).get('project_type') or '—'}\n\n"
+        f"They said:\n{message}\n"
+    )
+
+    return {
+        "email": send_email(tenant_id, n.get("email_to", ""), subject, body),
+        "sms": send_sms(
+            tenant_id, n.get("sms_to", ""),
+            f"Reply from {name} ({phone}): {message[:300]}"
+        ),
+    }
 
 
 def get_outbox(tenant_id: str, limit: int = 50) -> list:
