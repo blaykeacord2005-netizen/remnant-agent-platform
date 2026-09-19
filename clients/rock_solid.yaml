@@ -92,6 +92,17 @@ notifications:
   email_to: "rocksolidconcrete9749@gmail.com"
   sms_to: "+17653199749"
 
+missed_call:
+  # Text-back when a call to Rock Solid goes unanswered. Opt-in per client.
+  enabled: true
+  # Placeholders come from the business block: {short_name} {name} {owner} {phone}
+  sms_template: "Sorry we missed your call! This is {short_name} — how can we help?"
+  # The Twilio number callers dial, in +1XXXXXXXXXX form. Texts are sent from it.
+  # Blank = fall back to the platform-wide TWILIO_/TELNYX_PHONE_NUMBER env var.
+  sms_from: ""
+  # Don't re-text the same caller inside this window (the call is still logged).
+  cooldown_hours: 24
+
 reviews:
   # Fill this in once Brandon's Google Business Profile is claimed.
   google_review_url: ""
