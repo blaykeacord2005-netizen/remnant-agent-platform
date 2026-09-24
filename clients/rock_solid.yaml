@@ -11,6 +11,7 @@ business:
   short_name: "Rock Solid"
   owner: "Brandon"
   phone: "(765) 319-9749"
+  secondary_phone: "(765) 480-3401"
   email: "rocksolidconcrete9749@gmail.com"
   address: "120 Kingston Rd, Kokomo, IN 46901"
   facebook: "https://www.facebook.com/rocksolidconcrete9749/"
@@ -34,11 +35,11 @@ business:
 agent:
   name: "Rocky"
   role: "front desk assistant"
-  greeting: "Hey! Thanks for reaching out to Rock Solid Concrete. What kind of project are you looking at?"
+  greeting: "Hey! Thanks for reaching out to Rock Solid Concrete. What kind of project are you looking at today?"
   voice_tone: >
     Friendly, direct, and down-to-earth — like a knowledgeable guy at a
     contractor's front desk, not a corporate call center. Short sentences.
-    No jargon. Never oversell.
+    No jargon. Never oversell. Sound local and trustworthy.
 
 branding:
   primary_color: "#c0271d"
@@ -71,6 +72,15 @@ facts:
   - "Family owned and locally operated out of Kokomo."
   - "Final walkthrough with the customer before final payment."
   - "Jobsite is cleaned up at the end of every workday."
+  - "We serve Kokomo, Howard County, and surrounding towns including Greentown, Russiaville, Peru, Logansport, Tipton, and more."
+  - "Both phone numbers work: (765) 319-9749 and (765) 480-3401."
+
+# Why choose us — short talking points the agent can use
+why_choose_us:
+  - "Local Kokomo family business — not a big out-of-town crew."
+  - "Proper base prep and steel reinforcement so the work lasts."
+  - "We clean up every day and do a final walkthrough with you."
+  - "No pressure sales. Free estimate, written quote, honest timeline."
 
 # The agent must NEVER quote prices or commit to dates — those go to Brandon.
 escalation_rules:
@@ -86,6 +96,7 @@ lead_fields:
   - project_type
   - project_details
   - timeline
+  - preferred_contact_method
 
 notifications:
   # Where new leads get sent. Configure per client.
@@ -96,7 +107,7 @@ missed_call:
   # Text-back when a call to Rock Solid goes unanswered. Opt-in per client.
   enabled: true
   # Placeholders come from the business block: {short_name} {name} {owner} {phone}
-  sms_template: "Sorry we missed your call! This is {short_name} — how can we help?"
+  sms_template: "Sorry we missed your call! This is {short_name} — how can we help with your concrete project? Call or text us back anytime."
   # The Twilio number callers dial, in +1XXXXXXXXXX form. Texts are sent from it.
   # Blank = fall back to the platform-wide TWILIO_/TELNYX_PHONE_NUMBER env var.
   sms_from: ""
@@ -109,3 +120,13 @@ reviews:
   facebook_review_url: "https://www.facebook.com/rocksolidconcrete9749/reviews"
   # Customers who indicate they're unhappy never get sent to these links.
   # They get routed to Brandon for a personal call instead.
+
+# Local SEO notes for future marketing use
+seo_notes:
+  primary_keywords:
+    - concrete contractor Kokomo
+    - driveway installation Kokomo IN
+    - patio concrete Kokomo
+    - stamped concrete near me
+    - retaining wall contractor Howard County
+  target_cities: ["Kokomo", "Greentown", "Russiaville", "Peru", "Logansport", "Tipton"]
